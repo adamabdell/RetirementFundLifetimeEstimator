@@ -15,6 +15,11 @@ class CalculateFundLifetimeService:
         return round(amount_after_growth, 2)
 
 
+    def take_expenses_out(principal_amount: float, expenses: float):
+
+        money_amount_after_expenses = principal_amount - expenses
+        return round(money_amount_after_expenses, 2)
+
 
 
 
