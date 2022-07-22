@@ -5,35 +5,35 @@ from typing_extensions import TypedDict
 
 
 class ExpenseBreakdown(TypedDict, total=False):
-    property_tax: Optional[float] = 0
-    county_tax: Optional[float] = 0
-    car_insurance: Optional[float] = 0
-    health_insurance: Optional[float] = 0
-    home_insurance: Optional[float] = 0
-    house_maintenance: Optional[float] = 0
-    home_owners_association: Optional[float] = 0
-    phone_bill: Optional[float] = 0
-    electricity_gas_bill: Optional[float] = 0
-    car_gas: Optional[float] = 0
-    car_maintenance: Optional[float] = 0
-    internet: Optional[float] = 0
-    travel: Optional[float] = 0
-    clothing: Optional[float] = 0
-    misc: Optional[float] = 0
+    property_tax: Optional[float] = None
+    county_tax: Optional[float] = None
+    car_insurance: Optional[float] = None
+    health_insurance: Optional[float] = None
+    home_insurance: Optional[float] = None
+    house_maintenance: Optional[float] = None
+    home_owners_association: Optional[float] = None
+    phone_bill: Optional[float] = None
+    electricity_gas_bill: Optional[float] = None
+    car_gas: Optional[float] = None
+    car_maintenance: Optional[float] = None
+    internet: Optional[float] = None
+    travel: Optional[float] = None
+    clothing: Optional[float] = None
+    misc: Optional[float] = None
 
 
 class RequestObject(BaseModel):
     zakat: bool
-    cash_amount: Optional[float] = 0
-    invested_amount: Optional[float] = 0
-    estimated_rate_of_return: Optional[float] = 0
-    income: Optional[float] = 0
-    estimated_monthly_expenses: Optional[float] = 0
-    estimated_expenses_breakdown: Optional[ExpenseBreakdown] = 0
+    cash_amount: Optional[float] = None
+    invested_amount: Optional[float] = None
+    estimated_rate_of_return: Optional[float] = None
+    income: Optional[float] = None
+    estimated_monthly_expenses: Optional[float] = None
+    estimated_expenses_breakdown: Optional[ExpenseBreakdown] = None
 
 
 class ResponseObject(BaseModel):
-    years_until_money_runs_out: int
+    estimated_retirement_fund_lifetime_in_years: int
 
 
 
