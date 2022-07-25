@@ -21,8 +21,7 @@ class CalculateFundLifetimeService:
         return round(money_amount_after_expenses, 2)
 
 
-    def test(self):
-        pass
+
 
 
 
