@@ -21,3 +21,13 @@ def test_calculate_wealth_after_stock_growth_should_return_correct_amount():
 
     assert amount_after_growth == 107.54
 
+
+def test_take_expenses_out_should_return_correct_amount():
+
+    amount = 231.44
+    expenses = 144.98
+
+    service = calculations.CalculateFundLifetimeService
+    amount_after_expenses = service.take_expenses_out(amount, expenses)
+
+    assert amount_after_expenses == 86.46
