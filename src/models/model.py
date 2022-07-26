@@ -23,9 +23,11 @@ class ExpenseBreakdown(TypedDict, total=False):
 
 
 class RequestObject(BaseModel):
+    age: Optional[int] = None
     zakat: bool
     cash_amount: Optional[float] = None
     invested_amount: Optional[float] = None
+    additional_yearly_contribution: Optional[float] = None
     estimated_rate_of_return: Optional[float] = None
     income: Optional[float] = None
     estimated_monthly_expenses: Optional[float] = None
