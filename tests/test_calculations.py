@@ -7,21 +7,23 @@ from src.models.model import RequestObject, ExpenseBreakdown
 
 def test_zakat_owed_per_year_should_return_correct_amount():
     amount = 100.0
+    expected_zakat_owed = 2.57
 
     service = calculations.CalculateFundLifetimeService()
     zakat_owed = service.zakat_owed_per_year(amount)
 
-    assert zakat_owed == 2.57
+    assert zakat_owed == expected_zakat_owed
 
 
 def test_calculate_wealth_after_stock_growth_should_return_correct_amount():
     amount = 100.50
     growth_percentage = 7
+    expcted_amount_after_growth = 107.54
 
     service = calculations.CalculateFundLifetimeService()
     amount_after_growth = service.calculate_wealth_after_stock_growth(amount, growth_percentage)
 
-    assert amount_after_growth == 107.54
+    assert amount_after_growth == expcted_amount_after_growth
 
 
 def test_take_expenses_out_should_return_correct_amount():
@@ -68,18 +70,21 @@ def test_handle_data_from_api_when_estimated_expenses_breakdown_and_estimated_mo
 
 def test_calculate_yearly_expense_should_return_correct_amount():
     monthly_expense = 3000
+    expected_yearly_expense = 36000
 
     service = calculations.CalculateFundLifetimeService()
     yearly_expense = service.calculate_yearly_expense(monthly_expense)
 
-    assert yearly_expense == 36000
+    assert yearly_expense == expected_yearly_expense
 
 
 def test_calculate_yearly_expense_breakdown_should_return_correct_amount(example_expense_breakdown):
+    expected_yearly_expense = 23400
+
     service = calculations.CalculateFundLifetimeService()
     yearly_expense = service.calculate_yearly_expense_breakdown(example_expense_breakdown)
 
-    assert yearly_expense == 23400
+    assert yearly_expense == expected_yearly_expense
 
 
 
