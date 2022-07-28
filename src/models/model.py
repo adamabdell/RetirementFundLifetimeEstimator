@@ -7,6 +7,7 @@ from typing_extensions import TypedDict
 class ExpenseBreakdown(TypedDict, total=False):
     property_tax: Optional[float] = None
     county_tax: Optional[float] = None
+    food: Optional[float] = None
     car_insurance: Optional[float] = None
     health_insurance: Optional[float] = None
     home_insurance: Optional[float] = None
