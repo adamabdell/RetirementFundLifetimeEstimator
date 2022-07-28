@@ -27,7 +27,7 @@ class CalculateFundLifetimeService:
 
         if invested_amount is not None:
             years_lasted = self.find_number_of_years_invested_amount_will_last(data)
-        if cash_amount is not None:
+        else:
             years_lasted = self.find_number_of_years_cash_amount_will_last(data)
 
         return years_lasted
@@ -68,10 +68,9 @@ class CalculateFundLifetimeService:
 
             if data['zakat'] is True:
                 zakat_owed = self.zakat_owed_per_year(beginning_year_wealth, end_year_amount)
-            else:
-                zakat_owed = 0
+                end_year_amount = end_year_amount - zakat_owed
 
-            beginning_year_wealth = end_year_amount - zakat_owed
+            beginning_year_wealth = end_year_amount
 
             print(beginning_year_wealth)
 
@@ -94,10 +93,9 @@ class CalculateFundLifetimeService:
 
             if data['zakat'] is True:
                 zakat_owed = self.zakat_owed_per_year(beginning_year_wealth, end_year_amount_after_expenses)
-            else:
-                zakat_owed = 0
+                end_year_amount_after_expenses = end_year_amount_after_expenses - zakat_owed
 
-            beginning_year_wealth = end_year_amount_after_expenses - zakat_owed
+            beginning_year_wealth = end_year_amount_after_expenses
 
             print(beginning_year_wealth)
 
@@ -106,10 +104,11 @@ class CalculateFundLifetimeService:
         return year_number - 1
 
 
-    # avg inflation is ~3%
     def expense_amount_change_based_on_inflation(self, expenses: float, year_number: int):
 
-        expenses_after_inflation = expenses * (1.03 ** year_number)
+        average_yearly_inflation = 1.03
+
+        expenses_after_inflation = expenses * (average_yearly_inflation ** year_number)
         return round(expenses_after_inflation, 2)
 
 

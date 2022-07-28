@@ -156,43 +156,43 @@ def test_expense_amount_change_based_on_inflation_year_five_to_six_should_return
 def test_find_number_of_years_invested_amount_will_last_with_zakat_should_return_correct_year():
     data_passed = dict(zakat=True, invested_amount=100_000, estimated_rate_of_return=8,
                                 estimated_yearly_expenses=36000)
-    expected_years_passed = 2
+    expected_fund_lifetime = 2
 
     service = calculations.CalculateFundLifetimeService()
-    years_passed = service.find_number_of_years_invested_amount_will_last(data_passed)
+    fund_lifetime = service.find_number_of_years_invested_amount_will_last(data_passed)
 
-    assert years_passed == expected_years_passed
+    assert fund_lifetime == expected_fund_lifetime
 
 
 def test_find_number_of_years_invested_amount_will_last_without_zakat_should_return_correct_year():
     data_passed = dict(zakat=False, invested_amount=100_000, estimated_rate_of_return=8,
                        estimated_yearly_expenses=36000)
-    expected_years_passed = 2
+    expected_fund_lifetime = 2
 
     service = calculations.CalculateFundLifetimeService()
-    years_passed = service.find_number_of_years_invested_amount_will_last(data_passed)
+    fund_lifetime = service.find_number_of_years_invested_amount_will_last(data_passed)
 
-    assert years_passed == expected_years_passed
+    assert fund_lifetime == expected_fund_lifetime
 
 
 def test_find_number_of_years_cash_amount_will_last_with_zakat_should_return_correct_year():
     data_passed = dict(zakat=True, cash_amount=100_000, estimated_yearly_expenses=36000)
-    expected_years_passed = 2
+    expected_fund_lifetime = 2
 
     service = calculations.CalculateFundLifetimeService()
-    years_passed = service.find_number_of_years_cash_amount_will_last(data_passed)
+    fund_lifetime = service.find_number_of_years_cash_amount_will_last(data_passed)
 
-    assert years_passed == expected_years_passed
+    assert fund_lifetime == expected_fund_lifetime
 
 
 def test_find_number_of_years_cash_amount_will_last_without_zakat_should_return_correct_year():
     data_passed = dict(zakat=False, cash_amount=100_000, estimated_yearly_expenses=36000)
-    expected_years_passed = 2
+    expected_fund_lifetime = 2
 
     service = calculations.CalculateFundLifetimeService()
-    years_passed = service.find_number_of_years_cash_amount_will_last(data_passed)
+    fund_lifetime = service.find_number_of_years_cash_amount_will_last(data_passed)
 
-    assert years_passed == expected_years_passed
+    assert fund_lifetime == expected_fund_lifetime
 
 
 #IGNORE########################################################################################################################
