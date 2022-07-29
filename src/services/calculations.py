@@ -6,6 +6,9 @@ class CalculateFundLifetimeService:
     def handle_data_from_api(self, data: RequestObject):
 
         data = data.dict()
+
+        print('888888888888888888888888888888888888888888888')
+        print(data)
         monthly_expense = data['estimated_monthly_expenses']
         expense_breakdown = data['estimated_expenses_breakdown']
 

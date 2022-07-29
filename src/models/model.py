@@ -35,9 +35,6 @@ class RequestObject(BaseModel):
     estimated_expenses_breakdown: Optional[ExpenseBreakdown] = None
 
 
-class ResponseObject(BaseModel):
-    estimated_retirement_fund_lifetime_in_years: int
-
 
 
 
