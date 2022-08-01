@@ -6,6 +6,7 @@ class CalculateFundLifetimeService:
     def handle_data_from_api(self, data: RequestObject):
 
         data = data.dict()
+
         monthly_expense = data['estimated_monthly_expenses']
         expense_breakdown = data['estimated_expenses_breakdown']
 
@@ -71,12 +72,9 @@ class CalculateFundLifetimeService:
                 end_year_amount = end_year_amount - zakat_owed
 
             beginning_year_wealth = end_year_amount
-
             print(beginning_year_wealth)
-
             year_number += 1
 
-        print(year_number-1)
         return year_number - 1
 
 
@@ -96,8 +94,6 @@ class CalculateFundLifetimeService:
                 end_year_amount_after_expenses = end_year_amount_after_expenses - zakat_owed
 
             beginning_year_wealth = end_year_amount_after_expenses
-
-            print(beginning_year_wealth)
 
             year_number += 1
 
