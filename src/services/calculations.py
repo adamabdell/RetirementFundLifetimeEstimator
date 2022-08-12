@@ -13,6 +13,9 @@ class CalculateFundLifetimeService:
         cash_amount = data['cash_amount']
         invested_amount = data['invested_amount']
 
+        social_security_income = data['social_security_income']
+        age = data['age']
+
         if (cash_amount is None and invested_amount is None) or (cash_amount == 0 and invested_amount == 0) or (cash_amount is not None and invested_amount is not None):
             raise InvalidWealthInput
         if monthly_expense is not None and expense_breakdown is not None:
@@ -22,6 +25,9 @@ class CalculateFundLifetimeService:
             data['estimated_yearly_expenses'] = self.calculate_yearly_expense(monthly_expense)
         if expense_breakdown is not None:
             data['estimated_yearly_expenses'] = self.calculate_yearly_expense_breakdown(expense_breakdown)
+
+        if age is not None:
+            self.find_how_many_years_until_social_security_is_relevent(age)
 
         del data['estimated_expenses_breakdown']
         del data['estimated_monthly_expenses']
@@ -51,6 +57,15 @@ class CalculateFundLifetimeService:
 
         yearly_expense = sum(list_of_yearly_expenses)
         return round(yearly_expense, 2)
+
+
+    def find_how_many_years_until_social_security_is_relevent(self, age: int):
+
+        retirement_age = 62
+        if age > retirement_age:
+            return 0
+        else:
+            return retirement_age - age
 
 
     def find_number_of_years_invested_amount_will_last(self, data: dict):
