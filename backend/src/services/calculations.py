@@ -1,4 +1,4 @@
-from src.models.model import RequestObject
+from backend.src.models.model import RequestObject
 
 class CalculateFundLifetimeService:
 

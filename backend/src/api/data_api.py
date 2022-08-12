@@ -1,8 +1,13 @@
 from fastapi import FastAPI, HTTPException
-from src.models.model import RequestObject
-from src.services.calculations import CalculateFundLifetimeService, InvalidWealthInput, InvalidExpenseInput
+from backend.src.models.model import RequestObject
+from backend.src.services.calculations import CalculateFundLifetimeService, InvalidWealthInput, InvalidExpenseInput
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+    "localhost:3000"
+]
 
 
 @app.get("/")

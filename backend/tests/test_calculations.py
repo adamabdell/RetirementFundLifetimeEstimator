@@ -1,8 +1,8 @@
 from unittest import mock
 
 import pytest
-from src.services import calculations
-from src.models.model import RequestObject, ExpenseBreakdown
+from backend.src.services import calculations
+from backend.src.models.model import RequestObject, ExpenseBreakdown
 
 
 def test_zakat_owed_per_year_when_finishing_year_with_more_money_than_the_start_should_return_correct_amount():

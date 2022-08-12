@@ -1,8 +1,7 @@
-import pytest
 from fastapi.testclient import TestClient
 
-from src.api.data_api import app
-from src.models.model import RequestObject
+from backend.src.api.data_api import app
+from backend.src.models.model import RequestObject
 
 client = TestClient(app)
 
