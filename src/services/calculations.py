@@ -27,10 +27,12 @@ class CalculateFundLifetimeService:
             data['estimated_yearly_expenses'] = self.calculate_yearly_expense_breakdown(expense_breakdown)
 
         if age is not None:
-            self.find_how_many_years_until_social_security_is_relevent(age)
+            data['age'] = self.find_how_many_years_until_social_security_is_relevent(age)
 
         del data['estimated_expenses_breakdown']
         del data['estimated_monthly_expenses']
+
+        print(data)
 
         if invested_amount is not None:
             years_lasted = self.find_number_of_years_invested_amount_will_last(data)
@@ -73,21 +75,34 @@ class CalculateFundLifetimeService:
         beginning_year_wealth = data['invested_amount']
         yearly_expenses = data['estimated_yearly_expenses']
         stock_growth_percentage = data['estimated_rate_of_return']
+        age = data['age']
+        income = data['social_security_income']
+        #wealth_amount_after_income = 0
         year_number = 0
+        income_year_number = 0
 
         while beginning_year_wealth > 0:
 
+            if income_year_number >= age:
+                income_amount = self.income_amount_change_based_on_inflation(income, income_year_number)
+                wealth_amount_after_income = round(beginning_year_wealth + income_amount, 2)
+                print('year: ', income_year_number, '-----', wealth_amount_after_income)
+                income_year_number += 1
+
+            beginning_year_wealth = wealth_amount_after_income
             expense = self.expense_amount_change_based_on_inflation(yearly_expenses, year_number)
             wealth_amount_after_expenses = round(beginning_year_wealth - expense, 2)
+            print('year: ', year_number, '-----', wealth_amount_after_expenses)
 
             end_year_amount = round(self.calculate_wealth_after_stock_growth(wealth_amount_after_expenses, stock_growth_percentage), 2)
 
             if data['zakat'] is True:
                 zakat_owed = self.zakat_owed_per_year(beginning_year_wealth, end_year_amount)
                 end_year_amount = end_year_amount - zakat_owed
+                print('8888888888', end_year_amount)
 
             beginning_year_wealth = end_year_amount
-            print(beginning_year_wealth)
+            ##print(beginning_year_wealth)
             year_number += 1
 
         return year_number - 1
@@ -122,6 +137,13 @@ class CalculateFundLifetimeService:
         expenses_after_inflation = expenses * (average_yearly_inflation ** year_number)
         return round(expenses_after_inflation, 2)
 
+
+    def income_amount_change_based_on_inflation(self, income: float, year_number: int):
+
+        average_yearly_inflation = 1.03
+
+        income_after_inflation = income * (average_yearly_inflation ** year_number)
+        return round(income_after_inflation, 2)
 
     def zakat_owed_per_year(self, beginning_year_wealth: float, end_year_amount: float):
 
