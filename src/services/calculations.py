@@ -67,7 +67,7 @@ class CalculateFundLifetimeService:
 
             end_year_amount = round(self.calculate_wealth_after_stock_growth(wealth_amount_after_expenses, stock_growth_percentage), 2)
 
-            if data['zakat'] is True:
+            if (data['zakat'] is True) and (end_year_amount >= 4900.00):
                 zakat_owed = self.zakat_owed_per_year(beginning_year_wealth, end_year_amount)
                 end_year_amount = end_year_amount - zakat_owed
 
