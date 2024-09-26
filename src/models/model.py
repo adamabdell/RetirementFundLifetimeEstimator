@@ -30,7 +30,7 @@ class RequestObject(BaseModel):
     invested_amount: Optional[float] = None
     additional_yearly_contribution: Optional[float] = None
     estimated_rate_of_return: Optional[float] = None
-    income: Optional[float] = None
+    social_security_income: Optional[float] = None
     estimated_monthly_expenses: Optional[float] = None
     estimated_expenses_breakdown: Optional[ExpenseBreakdown] = None
 
