@@ -60,14 +60,14 @@ class CalculateFundLifetimeService:
         stock_growth_percentage = data['estimated_rate_of_return']
         year_number = 0
 
-        while beginning_year_wealth > 0:
+        while beginning_year_wealth > 0 and year_number < 500:
 
             expense = self.expense_amount_change_based_on_inflation(yearly_expenses, year_number)
             wealth_amount_after_expenses = round(beginning_year_wealth - expense, 2)
 
             end_year_amount = round(self.calculate_wealth_after_stock_growth(wealth_amount_after_expenses, stock_growth_percentage), 2)
 
-            if (data['zakat'] is True) and (end_year_amount >= 4900.00):
+            if (data['zakat'] is True) and (end_year_amount >= 9332.00):
                 zakat_owed = self.zakat_owed_per_year(beginning_year_wealth, end_year_amount)
                 end_year_amount = end_year_amount - zakat_owed
 
@@ -84,7 +84,7 @@ class CalculateFundLifetimeService:
         yearly_expenses = data['estimated_yearly_expenses']
         year_number = 0
 
-        while beginning_year_wealth > 0:
+        while beginning_year_wealth > 0 and year_number < 500:
 
             expense = self.expense_amount_change_based_on_inflation(yearly_expenses, year_number)
             end_year_amount_after_expenses = round(beginning_year_wealth - expense, 2)
