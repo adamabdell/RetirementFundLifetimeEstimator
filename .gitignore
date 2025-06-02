@@ -1,2 +1,5 @@
 ignoreme.txt
 /test.py
+__pycache__/
+*.pyc
+*.pyo

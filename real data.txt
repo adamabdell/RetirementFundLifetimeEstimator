@@ -1,0 +1,64 @@
+with 7% growth
+
+Start : 700,000
+
+take out expenses: 660,700
+end of year amount with growth: 706,949
+zakat owed: 17,990
+
+
+Start: 688,959
+
+take out expenses: 648,480
+end of year amount with growth: 693,873.6
+zakat owed: 17,706.25
+
+
+Start: 676,167.35
+
+take out expenses: 634,473.99
+end of year amount with growth: 678,887.17
+zakat owed: 17,377.50
+
+
+Start: 661,509.67
+
+take out expenses: 618,565.5
+end of year amount with growth: 661,865.09
+zakat owed: 17,000.80
+
+
+Start: 644,864.29
+
+take out expenses: 600,631.8
+end of year amount with growth: 642,676.03
+zakat owed: 16,516.77
+
+
+Start: 626,159.26
+
+take out expenses: 600,631.8
+end of year amount with growth: 642,676.03
+zakat owed: 16,516.77
+
+
+int propertyTax = 4000; //year
+		int carInsurance = 1200; //year
+		int healthInsurance = 800; //month
+		int homeInsurance = 1000; //year
+		int houseMaintenance = 2000; //year
+		int phone = 1000; //year
+		int electricity = 300; //month
+		int countyTax = 400; //year
+		int internet = 600; //year
+		int gas = 1400; //year
+		int travel = 8500; //year
+		int clothing = 100; //month
+		int carMaintenance = 1200; //year
+		int misc = 300; //month
+
+
+
+
+
+

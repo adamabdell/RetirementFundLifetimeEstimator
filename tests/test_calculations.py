@@ -50,6 +50,9 @@ def test_take_expenses_out_should_return_correct_amount():
 
 @mock.patch.object(calculations.CalculateFundLifetimeService, "calculate_yearly_expense")
 def test_handle_data_from_api_when_estimated_monthly_expenses_has_value_should_call_calculate_yearly_expense(mock):
+
+    mock.return_value = 36000
+
     data_passed = RequestObject(zakat=True, invested_amount=650, estimated_rate_of_return=8,
                                 estimated_monthly_expenses=3000)
 
@@ -60,6 +63,8 @@ def test_handle_data_from_api_when_estimated_monthly_expenses_has_value_should_c
 
 @mock.patch.object(calculations.CalculateFundLifetimeService, "calculate_yearly_expense_breakdown")
 def test_handle_data_from_api_when_estimated_expenses_breakdown_has_value_should_call_calculate_yearly_expense_breakdown(mock, example_expense_breakdown):
+
+    mock.return_value = 25800
 
     data_passed = RequestObject(zakat=True, invested_amount=650, estimated_rate_of_return=8,
                                 estimated_expenses_breakdown=example_expense_breakdown)
