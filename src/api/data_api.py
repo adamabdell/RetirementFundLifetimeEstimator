@@ -11,7 +11,7 @@ def dummy():
 
 
 
-@app.get("/user_input", status_code=200)
+@app.post("/user_input", status_code=200)
 def get_fund_lifetime(request: RequestObject):
 
     service = CalculateFundLifetimeService()
