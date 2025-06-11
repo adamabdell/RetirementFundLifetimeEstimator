@@ -200,10 +200,29 @@ def test_find_number_of_years_cash_amount_will_last_without_zakat_should_return_
     assert fund_lifetime == expected_fund_lifetime
 
 
+def test_find_how_many_years_until_social_security_is_relevent():
+    age = 57
+    expected_time_until_income_kicks_in = 5
+
+    service = calculations.CalculateFundLifetimeService()
+    time_until_income_is_relevent = service.find_how_many_years_until_social_security_is_relevent(age)
+
+    assert expected_time_until_income_kicks_in == time_until_income_is_relevent
+
+
+def test_income_amount_change_based_on_inflation():
+    income = 1000
+    year_number = 3
+    expected_income_amount = 1092.73
+
+    service = calculations.CalculateFundLifetimeService()
+    income_after_inflation = service.income_amount_change_based_on_inflation(income, year_number)
+
+    assert income_after_inflation == expected_income_amount
 #IGNORE########################################################################################################################
 def test_dummy_invested():
-    data_passed = RequestObject(zakat=True, invested_amount=100_000, estimated_rate_of_return=8,
-                                estimated_monthly_expenses=3000)
+    data_passed = RequestObject(age=63, zakat=True, invested_amount=10_000, estimated_rate_of_return=5,
+                                social_security_income=1000, estimated_monthly_expenses=200)
 
     service = calculations.CalculateFundLifetimeService()
     service.handle_data_from_api(data_passed)
